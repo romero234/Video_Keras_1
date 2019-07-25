@@ -4,7 +4,14 @@ RUN apt-get update -y && apt-get install --no-install-recommends -y -q ca-certif
                                                   wget unzip git
 
 RUN easy_install pip
-
+WORKDIR /Video-Classifier
+COPY . /Video-Classifier
+RUN apt-get install python-dev
+RUN apt-get install -y python-subprocess32
+RUN apt-get install python-tk -y
+RUN apt-get install libhdf5-dev -y
+RUN pip install pkgconfig
+RUN pip install matplotlib
 RUN pip install --trusted-host pypi.python.org -r requirements-on-my-python-env.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
